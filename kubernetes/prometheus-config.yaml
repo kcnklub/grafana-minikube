@@ -15,7 +15,7 @@ data:
       - job_name: 'node'
         static_configs:
         - targets: ['kyles-mbp.attlocal.net:9100']
-      - job_name: 'quarkus'
-        metrics_path: /q/metrics
+      - job_name: 'axum-prometheus'
+        metrics_path: /metrics
         static_configs:
-        - targets: ['kyles-mbp.attlocal.net:9101']
+        - targets: ['kyles-mbp.attlocal.net:8080']
