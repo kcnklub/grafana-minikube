@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: prometheus-server-conf
+  namespace: prometheus
+data:
+  prometheus.yml: | 
+    global:
+      scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+      evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+    scrape_configs:
+      - job_name: "prometheus"
+        static_configs:
+        - targets: ["localhost:9090"]
+      - job_name: 'node'
+        static_configs:
+        - targets: ['kyles-mbp.attlocal.net:9100']
+      - job_name: 'quarkus'
+        metrics_path: /q/metrics
+        static_configs:
+        - targets: ['kyles-mbp.attlocal.net:9101']
